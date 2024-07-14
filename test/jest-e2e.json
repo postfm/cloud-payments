@@ -12,6 +12,8 @@
   },
   "moduleNameMapper": {
     "@app/my-library/(.*)": "<rootDir>/../libs/my-library/src/$1",
-    "@app/my-library": "<rootDir>/../libs/my-library/src"
+    "@app/my-library": "<rootDir>/../libs/my-library/src",
+    "@app/cloud-payment/(.*)": "<rootDir>/../libs/cloud-payment/src/$1",
+    "@app/cloud-payment": "<rootDir>/../libs/cloud-payment/src"
   }
 }

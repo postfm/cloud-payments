@@ -18,11 +18,11 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@app/my-library": [
-        "libs/my-library/src"
+      "@app/cloud-payment": [
+        "libs/cloud-payment/src"
       ],
-      "@app/my-library/*": [
-        "libs/my-library/src/*"
+      "@app/cloud-payment/*": [
+        "libs/cloud-payment/src/*"
       ]
     }
   }

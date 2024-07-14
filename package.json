@@ -20,12 +20,14 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@nestjs/axios": "^3.0.2",
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^10.0.0",
     "@swc/cli": "^0.4.0",
     "@swc/core": "^1.6.13",
+    "axios": "^1.7.2",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1"
   },
@@ -73,7 +75,8 @@
       "<rootDir>/libs/"
     ],
     "moduleNameMapper": {
-      "^@app/my-library(|/.*)$": "<rootDir>/libs/my-library/src/$1"
+      "^@app/my-library(|/.*)$": "<rootDir>/libs/my-library/src/$1",
+      "^@app/cloud-payment(|/.*)$": "<rootDir>/libs/cloud-payment/src/$1"
     }
   }
 }
