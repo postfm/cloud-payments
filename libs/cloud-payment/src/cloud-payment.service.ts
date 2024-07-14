@@ -2,16 +2,14 @@ import { Observable } from 'rxjs';
 import { HttpService } from '@nestjs/axios';
 import { Inject, Injectable } from '@nestjs/common';
 import { AxiosResponse } from 'axios';
-import {
-  PaymentBaseRdo,
-  PaymentFailRdo,
-  PaymentSuccessRdo,
-  PaymentWith3DSecureRdo,
-} from './rdo/payment-out.rdo';
 import { PAYMENT_OPTIONS, Url } from './constants';
 import { CryptogramRequestDto } from './dto/cryptogram-request.dto';
 import { TokenRequestDto } from './dto/token-request.dto';
 import { VoidRequestDto } from './dto/void-request.dto';
+import { BaseResponseRdo } from './rdo/base-response.rdo';
+import { With3DSecureResponseRdo } from './rdo/with-3dsecure-response.rdo';
+import { FailResponseRdo } from './rdo/fail-response.rdo';
+import { SuccessResponseRdo } from './rdo/success-response.rdo';
 
 @Injectable()
 export class CloudPaymentService {
@@ -42,10 +40,10 @@ export class CloudPaymentService {
     data: CryptogramRequestDto,
   ): Observable<
     AxiosResponse<
-      | PaymentBaseRdo
-      | PaymentWith3DSecureRdo
-      | PaymentFailRdo
-      | PaymentSuccessRdo
+      | BaseResponseRdo
+      | With3DSecureResponseRdo
+      | FailResponseRdo
+      | SuccessResponseRdo
     >
   > {
     return this.httpService.post(
@@ -61,10 +59,10 @@ export class CloudPaymentService {
     data: CryptogramRequestDto,
   ): Observable<
     AxiosResponse<
-      | PaymentBaseRdo
-      | PaymentWith3DSecureRdo
-      | PaymentFailRdo
-      | PaymentSuccessRdo
+      | BaseResponseRdo
+      | With3DSecureResponseRdo
+      | FailResponseRdo
+      | SuccessResponseRdo
     >
   > {
     return this.httpService.post(
@@ -80,10 +78,10 @@ export class CloudPaymentService {
     data: TokenRequestDto,
   ): Observable<
     AxiosResponse<
-      | PaymentBaseRdo
-      | PaymentWith3DSecureRdo
-      | PaymentFailRdo
-      | PaymentSuccessRdo
+      | BaseResponseRdo
+      | With3DSecureResponseRdo
+      | FailResponseRdo
+      | SuccessResponseRdo
     >
   > {
     return this.httpService.post(
@@ -99,10 +97,10 @@ export class CloudPaymentService {
     data: TokenRequestDto,
   ): Observable<
     AxiosResponse<
-      | PaymentBaseRdo
-      | PaymentWith3DSecureRdo
-      | PaymentFailRdo
-      | PaymentSuccessRdo
+      | BaseResponseRdo
+      | With3DSecureResponseRdo
+      | FailResponseRdo
+      | SuccessResponseRdo
     >
   > {
     return this.httpService.post(
@@ -114,7 +112,9 @@ export class CloudPaymentService {
     );
   }
 
-  voidPayment(data: VoidRequestDto): Observable<AxiosResponse<PaymentBaseRdo>> {
+  voidPayment(
+    data: VoidRequestDto,
+  ): Observable<AxiosResponse<BaseResponseRdo>> {
     return this.httpService.post(`${this.options.endpoint}${Url.Void}`, data, {
       headers: this.autorization(),
     });
